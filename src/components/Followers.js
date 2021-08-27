@@ -6,11 +6,20 @@ const Container = styled.div`
     display:flex;
     flex-wrap:wrap;
     justify-content:space-evenly;
+
+    @media screen and (max-width:414px){
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 const H2 = styled.h2`
     margin: 5% 0;
     font-size:2rem;
+
+    @media screen and (max-width:375px){
+        font-size: 1.6rem;
+    }
 `
 
 class Followers extends React.Component {

@@ -1,8 +1,13 @@
 * {
   text-align: center;
-  background-color: #D7CEC7;
   color: #76323F;
 }
+
+body {
+  background-color: #D7CEC7;
+}
+
+html, body {width: auto!important; overflow-x: hidden!important} 
 
 .my-info {
   border:5px solid black;
@@ -11,8 +16,35 @@
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.24);
 }
 
+.my-info img {
+  width: 50%;
+}
+
 .container {
   display: flex;
   justify-content: center;
   margin-top:1%;
+}
+
+@media screen and (max-width:1024px){
+  .my-info img {
+    width: 80%;
+  }
+}
+@media screen and (max-width:1024px){
+  .my-info {
+    width: 45%;
+  }
+}
+@media screen and (max-width:540px){
+  .my-info {
+    width: 55%;
+    margin-bottom: 10%;
+  }
+}
+@media screen and (max-width:414px){
+  .my-info {
+    width: 64%;
+    margin-bottom: 10%;
+  }
 }

@@ -12,6 +12,12 @@ const StyledForm = styled.form`
         &:focus{
             background-color:white;
         }
+        @media screen and (max-width:768px){
+            width: 60%;
+        }
+        @media screen and (max-width:280px){
+            width: 48%;
+        }
     }
 
     button {
@@ -21,6 +27,12 @@ const StyledForm = styled.form`
         &:hover{
             cursor: pointer;
             filter:brightness(1.05);
+        }
+        @media screen and (max-width:768px){
+            width: 24%;
+        }
+        @media screen and (max-width:280px){
+            width: 28%;
         }
     }
 `
