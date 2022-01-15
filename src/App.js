@@ -1,67 +1,69 @@
-import React from 'react';
-import './App.css';
-import axios from 'axios';
+import React from "react";
+import "./App.css";
+import axios from "axios";
 
-import Followers from './components/Followers';
-import SearchUser from './components/SearchUser';
+import Followers from "./components/Followers";
+import SearchUser from "./components/SearchUser";
 
 class App extends React.Component {
   state = {
-    user:{},
-    followers:[],
+    user: {},
+    followers: [],
     username: "alvin-joseph",
-  }
+  };
 
   componentDidMount() {
     Promise.all([
       axios.get(`https://api.github.com/users/${this.state.username}`),
-      axios.get(`https://api.github.com/users/${this.state.username}/followers`)
+      axios.get(
+        `https://api.github.com/users/${this.state.username}/followers`
+      ),
     ])
-        .then(res => {
-            this.setState({
-                user:res[0].data,
-                followers:res[1].data
-            })
-        })
-        .catch(err => {
-            alert(`${err}: User not found`);
-        })
+      .then((res) => {
+        this.setState({
+          user: res[0].data,
+          followers: res[1].data,
+        });
+      })
+      .catch((err) => {
+        alert(`${err}: User not found`);
+      });
   }
 
-  onChange = evt => {
+  onChange = (evt) => {
     this.setState({
-      username:evt.target.value
-    })
+      username: evt.target.value,
+    });
   };
 
-  onSubmit = evt => {
+  onSubmit = (evt) => {
     evt.preventDefault();
     this.componentDidMount();
     this.setState({
-      username:""
-    })
-    };
+      username: "",
+    });
+  };
 
-  render(){
+  render() {
     const { user } = this.state;
     return (
       <div className="App">
         <div className="container">
           <div className="my-info">
             <SearchUser
-            onSubmit={this.onSubmit}
-            onChange={this.onChange}
-            username={this.state.username}
+              onSubmit={this.onSubmit}
+              onChange={this.onChange}
+              username={this.state.username}
             />
-            <img 
-            src={user.avatar_url} 
-            alt="my pic"
-            /><br/>
+            <img src={user.avatar_url} alt="my pic" />
+            <br />
             <h2>Hi my name is {user.name}</h2>
-            <a rel="noreferrer" target="_blank" href={user.html_url}>GitHub Link</a>
+            <a rel="noreferrer" target="_blank" href={user.html_url}>
+              GitHub Link
+            </a>
           </div>
         </div>
-        <Followers followers={this.state.followers}/>
+        <Followers followers={this.state.followers} />
       </div>
     );
   }
